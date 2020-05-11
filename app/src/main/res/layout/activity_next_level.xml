@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".NextLevel">
 
+    <Button
+        android:id="@+id/nextLevelButton"
+        android:layout_width="223dp"
+        android:layout_height="86dp"
+        android:onClick="nextLevel"
+        android:text="Next Level"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="463dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
