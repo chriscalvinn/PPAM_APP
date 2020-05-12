@@ -31,6 +31,8 @@ public class LevelOne extends AppCompatActivity {
         uploadButton = (TextView) findViewById(R.id.uploadButton);
         uploadButton.setText("Upload Picture");
 
+        //level = getIntent().getStringExtra("level")
+
         try {
             JSONObject reader = new JSONObject(testJson);
 
