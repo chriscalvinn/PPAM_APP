@@ -15,9 +15,8 @@ import org.json.JSONObject;
 public class NextLevel extends AppCompatActivity {
     final String arr[] = {"mainan", "anak muda", "bangunan"};
     int level = 0;
-    //JSONObject response = new JSONObject();
-    //response.put("success", "true");
-    //response.put("message", "benar");
+    TextView levelText;
+    Button butt;
 
     String testJson = "{'success':'true','message':'benar''}";
 
@@ -26,9 +25,9 @@ public class NextLevel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next_level);
 
-        TextView levelText = (TextView) findViewById(R.id.Level);
-        levelText.setText("Level "+level);
-        Button butt = (Button) findViewById(R.id.nextLevelButton);
+        levelText = (TextView) findViewById(R.id.Level);
+        levelText.setText("Level "+ arr[level]);
+        butt = (Button) findViewById(R.id.nextLevelButton);
         butt.setText("continue");
     }
 
