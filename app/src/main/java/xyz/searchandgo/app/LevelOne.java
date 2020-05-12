@@ -34,7 +34,7 @@ import java.io.InputStream;
 import java.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
-    final String arr[] = {"","Mainan", "Anak Muda", "Bangunan"};
+    final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
     int level = 1;
     TextView levelText, levelNum, uploadButton, checkButton;
 
@@ -99,7 +99,7 @@ public class LevelOne extends AppCompatActivity {
                     public void onResponse(JSONObject response){
                         try {
                             myIntent.putExtra("isSuccess", response.getString("success"));
-                        } catch (JSONException e){
+                        } catch (JSONException ignored){
 
                         }
                     }
