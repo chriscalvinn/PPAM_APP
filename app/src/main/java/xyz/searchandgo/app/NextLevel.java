@@ -8,14 +8,17 @@ import android.view.View;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NextLevel extends AppCompatActivity {
     final String arr[] = {"mainan", "anak muda", "bangunan"};
     int level = 0;
-    JSONObject response = new JSONObject();
-    response.put("success", "true");
-    response.put("message", "benar");
+    //JSONObject response = new JSONObject();
+    //response.put("success", "true");
+    //response.put("message", "benar");
+
+    String testJson = "{'success':'true','message':'benar''}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +26,12 @@ public class NextLevel extends AppCompatActivity {
         setContentView(R.layout.activity_next_level);
     }
 
+
     public void nextLevel(View v){
         JSONObject reader = new JSONObject(response);
+
         boolean bool = reader.getBoolean("success");
-        message = reader.getString("message");
+        String message = reader.getString("message");
 
         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
         if (bool){
