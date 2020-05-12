@@ -38,7 +38,12 @@ public class Continue extends AppCompatActivity {
         int level = getIntent().getIntExtra("level",1);
         Intent myIntent = new Intent(getBaseContext(), LevelOne.class);
         if (isSuccess){
-            level++;
+            if (level!=3) {
+                level++;
+                myIntent = new Intent(getBaseContext(), LevelOne.class);
+            }else {
+                myIntent = new Intent(getBaseContext(), MainActivity.class);
+            }
         }
         myIntent.putExtra("level", level);
         myIntent.putExtra("levelname", arr[level]);

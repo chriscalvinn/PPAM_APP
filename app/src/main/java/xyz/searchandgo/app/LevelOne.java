@@ -28,6 +28,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
@@ -76,32 +79,54 @@ public class LevelOne extends AppCompatActivity {
     }
 
 
-    public void checkPict(View v) throws JSONException{
+    public void checkPict(View v) throws JSONException, FileNotFoundException {
+        final Intent myIntent = new Intent(getBaseContext(), Continue.class);
+
         // Instantiate the RequestQueue.
+        final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+        String encodedImage = encodeImage(selectedImage);
+
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://api.searchandgo.xyz/?level=";
         JSONObject params = new JSONObject();
-        params.put("image", Base64.Encoder.encode(imageView));
+        params.put("image", encodedImage);
 
 
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONObject response){
+                        try {
+                            myIntent.putExtra("isSuccess", response.getString("success"));
+                        } catch (JSONException e){
 
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                TextView.setText("That didn't work!");
+
             }
         });
 
+        // Add the request to the RequestQueue.
+        queue.add(postRequest);
 
-        Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
 
         myIntent.putExtra("nextLevel", arr[level]);
+        myIntent.putExtra("level", level);
         startActivity(myIntent);
+    }
+
+    private String encodeImage(Bitmap bm)
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.Encoder.encodeToString(b);
+
+        return encImage;
     }
 
 }
