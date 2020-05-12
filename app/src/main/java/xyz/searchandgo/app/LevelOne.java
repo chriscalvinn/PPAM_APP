@@ -30,19 +30,25 @@ public class LevelOne extends AppCompatActivity {
         levelText.setText(arr[level]);
         uploadButton = (TextView) findViewById(R.id.uploadButton);
         uploadButton.setText("Upload Picture");
+
+        try {
+            JSONObject reader = new JSONObject(testJson);
+
+            boolean bool = reader.getBoolean("success");
+            String message = reader.getString("message");
+
+            if (bool) {
+                level++;
+            }
+        } catch (JSONException e){
+            throw new RuntimeException(e);
+        }
     }
 
 
-    public void checkPict(View v) throws JSONException {
-        JSONObject reader = new JSONObject(testJson);
-
-        boolean bool = reader.getBoolean("success");
-        String message = reader.getString("message");
+    public void checkPict(View v){
 
         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
-        if (bool){
-            level++;
-        }
 
         myIntent.putExtra("nextLevel", arr[level]);
         startActivity(myIntent);
