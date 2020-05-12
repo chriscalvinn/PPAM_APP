@@ -27,8 +27,8 @@ public class NextLevel extends AppCompatActivity {
     }
 
 
-    public void nextLevel(View v){
-        JSONObject reader = new JSONObject(response);
+    public void nextLevel(View v) throws JSONException {
+        JSONObject reader = new JSONObject(testJson);
 
         boolean bool = reader.getBoolean("success");
         String message = reader.getString("message");
