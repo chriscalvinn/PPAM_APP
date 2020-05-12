@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -24,6 +25,11 @@ public class NextLevel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next_level);
+
+        TextView levelText = (TextView) findViewById(R.id.Level);
+        levelText.setText("Level "+level);
+        Button butt = (Button) findViewById(R.id.nextLevelButton);
+        butt.setText("continue");
     }
 
 
@@ -37,8 +43,6 @@ public class NextLevel extends AppCompatActivity {
         if (bool){
             level++;
         }
-        TextView levelText = (TextView) findViewById(R.id.Level);
-        levelText.setText("Level "+level);
 
         myIntent.putExtra("nextLevel", arr[level]);
         startActivity(myIntent);
