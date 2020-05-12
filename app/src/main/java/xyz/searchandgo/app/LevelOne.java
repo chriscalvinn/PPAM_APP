@@ -81,7 +81,7 @@ public class LevelOne extends AppCompatActivity {
         JSONObject params = new JSONObject();
         params.put("image", imageView);
 
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url,
+        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
