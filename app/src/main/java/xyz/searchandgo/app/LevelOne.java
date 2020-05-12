@@ -12,28 +12,28 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class NextLevel extends AppCompatActivity {
+public class LevelOne extends AppCompatActivity {
     final String arr[] = {"","Mainan", "Anak Muda", "Bangunan"};
     int level = 1;
-    TextView levelText, levelNum;
-    Button butt;
+    TextView levelText, levelNum, uploadButton;
+
 
     String testJson = "{'success':'true','message':'benar''}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_next_level);
+        setContentView(R.layout.activity_level_one);
         levelNum = (TextView) findViewById(R.id.level);
         levelNum.setText("Level "+ level);
         levelText = (TextView) findViewById(R.id.judulLevel);
         levelText.setText(arr[level]);
-        butt = (Button) findViewById(R.id.nextLevelButton);
-        butt.setText("continue");
+        uploadButton = (TextView) findViewById(R.id.uploadButton);
+        uploadButton.setText("Upload Picture");
     }
 
 
-    public void nextLevel(View v) throws JSONException {
+    public void checkPict(View v) throws JSONException {
         JSONObject reader = new JSONObject(testJson);
 
         boolean bool = reader.getBoolean("success");

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".NextLevel"></activity>
+        <activity android:name=".LevelOne"></activity>
         <activity android:name=".MainActivity">
 
         </activity>

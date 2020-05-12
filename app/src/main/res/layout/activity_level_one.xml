@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NextLevel">
+    tools:context=".LevelOne">
 
     <Button
-        android:id="@+id/nextLevelButton"
+        android:id="@+id/uploadButton"
         android:layout_width="223dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
@@ -16,8 +16,8 @@
         android:layout_marginEnd="92dp"
         android:layout_marginRight="92dp"
         android:layout_marginBottom="160dp"
-        android:onClick="nextLevel"
         android:fontFamily="@font/textmeone"
+        android:onClick="checkPict"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -52,7 +52,7 @@
         android:layout_marginBottom="288dp"
         android:text="@string/mainan"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/nextLevelButton"
+        app:layout_constraintBottom_toTopOf="@+id/uploadButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigate(View v){
-        Intent myIntent = new Intent(getBaseContext(), NextLevel.class);
+        Intent myIntent = new Intent(getBaseContext(), LevelOne.class);
         startActivity(myIntent);
     }
 }
