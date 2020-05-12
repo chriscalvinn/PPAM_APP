@@ -17,6 +17,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,7 +73,27 @@ public class LevelOne extends AppCompatActivity {
     }
 
 
-    public void checkPict(View v){
+    public void checkPict(View v) throws JSONException{
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://api.searchandgo.xyz/?level=";
+        JSONObject params = new JSONObject();
+        params.put("image", imageView);
+
+        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                TextView.setText("That didn't work!");
+            }
+        });
+
 
         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
 

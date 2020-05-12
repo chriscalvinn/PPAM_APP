@@ -16,10 +16,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigate(View v){
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://www.google.com";
-
 
         Intent myIntent = new Intent(getBaseContext(), LevelOne.class);
         startActivity(myIntent);
