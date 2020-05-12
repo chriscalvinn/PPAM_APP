@@ -13,9 +13,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NextLevel extends AppCompatActivity {
-    final String arr[] = {"mainan", "anak muda", "bangunan"};
-    int level = 0;
-    TextView levelText;
+    final String arr[] = {"","Mainan", "Anak Muda", "Bangunan"};
+    int level = 1;
+    TextView levelText, levelNum;
     Button butt;
 
     String testJson = "{'success':'true','message':'benar''}";
@@ -24,9 +24,10 @@ public class NextLevel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next_level);
-
-        levelText = (TextView) findViewById(R.id.Level);
-        levelText.setText("Level "+ arr[level]);
+        levelNum = (TextView) findViewById(R.id.level);
+        levelNum.setText("Level "+ level);
+        levelText = (TextView) findViewById(R.id.judulLevel);
+        levelText.setText(arr[level]);
         butt = (Button) findViewById(R.id.nextLevelButton);
         butt.setText("continue");
     }

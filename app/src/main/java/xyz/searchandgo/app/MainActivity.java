@@ -12,9 +12,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
-    public void cobaPindah(View v){
+    public void navigate(View v){
         Intent myIntent = new Intent(getBaseContext(), NextLevel.class);
         startActivity(myIntent);
     }
