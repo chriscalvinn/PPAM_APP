@@ -64,16 +64,10 @@ public class LevelOne extends AppCompatActivity {
         }
     }
 
-    public void checkPict(View v) throws JSONException {
-        JSONObject reader = new JSONObject(testJson);
 
-        boolean bool = reader.getBoolean("success");
-        String message = reader.getString("message");
+    public void checkPict(View v){
 
         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
-        if (bool){
-            level++;
-        }
 
         myIntent.putExtra("nextLevel", arr[level]);
         startActivity(myIntent);
