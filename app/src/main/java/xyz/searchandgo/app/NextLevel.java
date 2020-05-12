@@ -22,7 +22,7 @@ public class NextLevel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next_level);
     }
-    
+
     public void nextLevel(View v){
         JSONObject reader = new JSONObject(response);
         boolean bool = reader.getBoolean("success");
