@@ -28,6 +28,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Base64;
+
 public class LevelOne extends AppCompatActivity {
     final String arr[] = {"","Mainan", "Anak Muda", "Bangunan"};
     int level = 1;
@@ -37,6 +39,7 @@ public class LevelOne extends AppCompatActivity {
     Uri imageUri;
     String testJson = "{'success':'true','message':'benar''}";
     private ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,12 +77,12 @@ public class LevelOne extends AppCompatActivity {
 
 
     public void checkPict(View v) throws JSONException{
-
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://api.searchandgo.xyz/?level=";
         JSONObject params = new JSONObject();
-        params.put("image", imageView);
+        params.put("image", Base64.Encoder.encode(imageView));
+
 
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, params,
                 new Response.Listener<JSONObject>() {
