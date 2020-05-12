@@ -1,4 +1,4 @@
-package com.example.ppam;
+package xyz.searchandgo.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 

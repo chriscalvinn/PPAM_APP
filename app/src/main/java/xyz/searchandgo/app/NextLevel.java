@@ -1,4 +1,4 @@
-package com.example.ppam;
+package xyz.searchandgo.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -21,16 +21,16 @@ public class NextLevel extends AppCompatActivity {
         setContentView(R.layout.activity_next_level);
     }
 
-    public void nextLevel(View v){
-        JSONObject reader = new JSONObject(response);
-        boolean bool = reader.getBoolean("success");
-        message = reader.getString("message");
-
-        Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
-        if (bool){
-        level++;
-        }
-        myIntent.putExtra("nextLevel", arr[level]);
-        startActivity(myIntent);
-    }
+//    public void nextLevel(View v){
+//        JSONObject reader = new JSONObject(response);
+//        boolean bool = reader.getBoolean("success");
+//        message = reader.getString("message");
+//
+//        Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
+//        if (bool){
+//        level++;
+//        }
+//        myIntent.putExtra("nextLevel", arr[level]);
+//        startActivity(myIntent);
+//    }
 }
