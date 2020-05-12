@@ -15,15 +15,11 @@
         tools:layout_editor_absoluteX="94dp"
         tools:layout_editor_absoluteY="463dp" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/Level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:text="LEVEL"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="119dp" />
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="124dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
