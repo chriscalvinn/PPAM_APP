@@ -32,7 +32,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-
 import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
@@ -49,7 +48,7 @@ public class LevelOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_one);
-        imageView = (ImageView) findViewById(R.id.image);
+        // imageView = (ImageView) findViewById(R.id.image);
 
 
         levelNum = (TextView) findViewById(R.id.level);
@@ -76,12 +75,18 @@ public class LevelOne extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
             imageUri = data.getData();
-            InputStream imageStream = getContentResolver().openInputStream(imageUri);
-            Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            selectedImage.compress(Bitmap.CompressFormat.JPEG,100,baos);
-            byte[] b = baos.toByteArray();
-            encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+            InputStream imageStream;
+            try {
+                imageStream = getContentResolver().openInputStream(imageUri);
+                Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                selectedImage.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                byte[] b = baos.toByteArray();
+                encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+            }
+            catch (FileNotFoundException ex) {
+                // insert code to run when exception occurs
+            }
         }
     }
 
@@ -123,14 +128,5 @@ public class LevelOne extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    private String encodeImage(Bitmap bm)
-    {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG,100,baos);
-        byte[] b = baos.toByteArray();
-        String encImage = Base64.Encoder.encodeToString(b);
-
-        return encImage;
-    }
 
 }
