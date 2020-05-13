@@ -115,6 +115,7 @@ public class LevelOne extends AppCompatActivity {
                         try {
                             MyApplication.getInstance().isSuccess = response.getBoolean("success");
                             MyApplication.getInstance().pesan = response.getString("message");
+                            MyApplication.getInstance().desc = response.getString("caption");
                         } catch (JSONException ignored){
                             MyApplication.getInstance().isSuccess = false;
                         }

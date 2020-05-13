@@ -10,6 +10,7 @@ public class MyApplication {
     public int level = 1;
     // private StringBuilder pesan = new StringBuilder();
     public String pesan;
+    public String desc;
     protected MyApplication(){}
 
     public static synchronized MyApplication getInstance() {
