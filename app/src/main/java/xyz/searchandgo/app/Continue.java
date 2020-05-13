@@ -18,7 +18,7 @@ public class Continue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue);
 
-        final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",false);
+        final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",true);
 
         setContentView(R.layout.activity_continue);
         continueText = (TextView) findViewById(R.id.continueText);
@@ -34,7 +34,7 @@ public class Continue extends AppCompatActivity {
     }
 
     public void cont(View v){
-        final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",false);
+        final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",true);
         int level = getIntent().getIntExtra("level",1);
         Intent myIntent = new Intent(getBaseContext(), LevelOne.class);
         if (isSuccess){
