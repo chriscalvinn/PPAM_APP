@@ -17,14 +17,10 @@ public class Continue extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue);
-<<<<<<< HEAD
+
         final boolean isSuccess;
         // final String tes;
         isSuccess = MyApplication.getInstance().isSuccess; // false is the default
-=======
-
-        final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",true);
->>>>>>> 44eb18ffbd03f19d856ce326c825f02ed8147789
 
         setContentView(R.layout.activity_continue);
         continueText = (TextView) findViewById(R.id.continueText);
