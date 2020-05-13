@@ -107,12 +107,14 @@ public class LevelOne extends AppCompatActivity {
         params.put("image", encodedImage);
 
         checkButton.setEnabled(false);
+        checkButton.setText("Uploading!");
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response){
                         try {
                             MyApplication.getInstance().isSuccess = response.getBoolean("success");
+                            MyApplication.getInstance().pesan = response.getString("message");
                         } catch (JSONException ignored){
                             MyApplication.getInstance().isSuccess = false;
                         }
@@ -121,13 +123,15 @@ public class LevelOne extends AppCompatActivity {
                             if(MyApplication.getInstance().isSuccess){
                                 MyApplication.getInstance().level = MyApplication.getInstance().level+1;
                             }
+                            checkButton.setText("Check Image");
                             startActivity(myIntent);
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                checkButton.setEnabled(true);
+                checkButton.setText("Check Image");
             }
         });
         queue.add(postRequest);

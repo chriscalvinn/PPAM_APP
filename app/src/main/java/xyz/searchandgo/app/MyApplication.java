@@ -9,7 +9,7 @@ public class MyApplication {
     public boolean isSuccess = false;
     public int level = 1;
     // private StringBuilder pesan = new StringBuilder();
-
+    public String pesan;
     protected MyApplication(){}
 
     public static synchronized MyApplication getInstance() {
