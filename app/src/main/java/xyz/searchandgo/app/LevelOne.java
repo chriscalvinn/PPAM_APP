@@ -36,7 +36,7 @@ import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
     final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
-    int level = getIntent().getIntExtra("level",1);
+    int level = 1;
     TextView levelText, levelNum, uploadButton, checkButton;
     ImageView imageView;
     private static final int PICK_IMAGE = 100;
@@ -48,7 +48,7 @@ public class LevelOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_one);
-
+        level = MyApplication.getInstance().level;
         imageView = (ImageView) findViewById(R.id.image);
 
         levelNum = (TextView) findViewById(R.id.level);
@@ -85,6 +85,7 @@ public class LevelOne extends AppCompatActivity {
                 selectedImage.compress(Bitmap.CompressFormat.JPEG,100,baos);
                 byte[] b = baos.toByteArray();
                 encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+                checkButton.setEnabled(true);
             }
             catch (FileNotFoundException ex) {
                 // insert code to run when exception occurs
@@ -94,7 +95,7 @@ public class LevelOne extends AppCompatActivity {
 
 
     public void checkPict(View v) throws JSONException, FileNotFoundException {
-        final Intent myIntent = new Intent(getBaseContext(), Continue.class);
+        final Intent myIntent = new Intent(this, Continue.class);
 
         // Instantiate the RequestQueue.
 
@@ -104,15 +105,22 @@ public class LevelOne extends AppCompatActivity {
         JSONObject params = new JSONObject();
         params.put("image", encodedImage);
 
-
+        checkButton.setEnabled(false);
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response){
                         try {
-                            myIntent.putExtra("isSuccess", response.getString("success"));
+                            MyApplication.getInstance().isSuccess = response.getBoolean("success");
                         } catch (JSONException ignored){
-
+                            MyApplication.getInstance().isSuccess = false;
+                        }
+                        finally {
+                            myIntent.putExtra("nextLevel", arr[level]);
+                            if(MyApplication.getInstance().isSuccess){
+                                MyApplication.getInstance().level = MyApplication.getInstance().level+1;
+                            }
+                            startActivity(myIntent);
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -121,14 +129,12 @@ public class LevelOne extends AppCompatActivity {
 
             }
         });
-
-        // Add the request to the RequestQueue.
         queue.add(postRequest);
 
 
-        myIntent.putExtra("nextLevel", arr[level]);
-        myIntent.putExtra("level", level);
-        startActivity(myIntent);
+
+        // Add the request to the RequestQueue.
+
     }
 
 

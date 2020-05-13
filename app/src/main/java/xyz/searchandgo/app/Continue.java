@@ -17,8 +17,9 @@ public class Continue extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue);
-
-        final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",false);
+        final boolean isSuccess;
+        // final String tes;
+        isSuccess = MyApplication.getInstance().isSuccess; // false is the default
 
         setContentView(R.layout.activity_continue);
         continueText = (TextView) findViewById(R.id.continueText);
@@ -31,15 +32,17 @@ public class Continue extends AppCompatActivity {
             continueText.setText("Fail");
             continueButton.setText("Retry");
         }
+        // continueText.setText(tes);
     }
 
     public void cont(View v){
         final boolean isSuccess = getIntent().getBooleanExtra("isSuccess",false);
-        int level = getIntent().getIntExtra("level",1);
+        int level = MyApplication.getInstance().level;
         Intent myIntent = new Intent(getBaseContext(), LevelOne.class);
         if (isSuccess){
             if (level!=3) {
                 level++;
+                MyApplication.getInstance().level = level;
                 myIntent = new Intent(getBaseContext(), LevelOne.class);
             }else {
                 myIntent = new Intent(getBaseContext(), MainActivity.class);
