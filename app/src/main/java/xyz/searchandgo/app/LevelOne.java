@@ -35,8 +35,9 @@ import java.io.InputStream;
 import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
-    final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
-    int level = getIntent().getIntExtra("level",1);
+    final String[] arr = {"","Banner", "Anak Muda", "Bangunan"};
+//    int level = getIntent().getIntExtra("level",1);
+    int level = 1;
     TextView levelText, levelNum, uploadButton, checkButton;
     ImageView imageView;
     private static final int PICK_IMAGE = 100;
@@ -110,7 +111,7 @@ public class LevelOne extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response){
                         try {
-                            myIntent.putExtra("isSuccess", response.getString("success"));
+                            myIntent.putExtra("isSuccess", response.getBoolean("success"));
                         } catch (JSONException ignored){
 
                         }

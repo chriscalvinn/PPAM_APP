@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Continue extends AppCompatActivity {
-    final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
+    final String[] arr = {"","Banner", "Anak Muda", "Bangunan"};
     TextView continueText;
     Button continueButton;
 
