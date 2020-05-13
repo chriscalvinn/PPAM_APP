@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class Continue extends AppCompatActivity {
     final String[] arr = {"","Banner", "Anak Muda", "Bangunan"};
-    TextView continueText;
+    TextView continueText, messageText;
     Button continueButton;
 
     @Override
@@ -25,7 +25,7 @@ public class Continue extends AppCompatActivity {
         setContentView(R.layout.activity_continue);
         continueText = (TextView) findViewById(R.id.continueText);
         continueButton = (Button) findViewById((R.id.contButton));
-
+        messageText = (TextView) findViewById(R.id.messageText);
         if (isSuccess){
             continueText.setText("Success");
             continueButton.setText("Continue");
@@ -33,7 +33,7 @@ public class Continue extends AppCompatActivity {
             continueText.setText("Fail");
             continueButton.setText("Retry");
         }
-        // continueText.setText(tes);
+        messageText.setText(MyApplication.getInstance().pesan);
     }
 
     public void cont(View v){
