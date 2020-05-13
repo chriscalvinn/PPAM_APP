@@ -31,7 +31,9 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Base64;
+
+
+import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
     final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
@@ -41,7 +43,7 @@ public class LevelOne extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     String testJson = "{'success':'true','message':'benar''}";
-    private ImageView imageView;
+    private String encodedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,12 @@ public class LevelOne extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
             imageUri = data.getData();
-            imageView.setImageURI(imageUri);
+            InputStream imageStream = getContentResolver().openInputStream(imageUri);
+            Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            selectedImage.compress(Bitmap.CompressFormat.JPEG,100,baos);
+            byte[] b = baos.toByteArray();
+            encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
         }
     }
 
@@ -83,9 +90,6 @@ public class LevelOne extends AppCompatActivity {
         final Intent myIntent = new Intent(getBaseContext(), Continue.class);
 
         // Instantiate the RequestQueue.
-        final InputStream imageStream = getContentResolver().openInputStream(imageUri);
-        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-        String encodedImage = encodeImage(selectedImage);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://api.searchandgo.xyz/?level=";
