@@ -33,6 +33,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 
+
 import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
@@ -49,7 +50,7 @@ public class LevelOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_one);
-        imageView = (ImageView) findViewById(R.id.image);
+        ImageView imageView = (ImageView) findViewById(R.id.image);
 
 
         levelNum = (TextView) findViewById(R.id.level);
