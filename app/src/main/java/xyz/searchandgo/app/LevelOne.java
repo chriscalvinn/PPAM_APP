@@ -36,7 +36,7 @@ import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
     final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
-    int level = 1;
+    int level = getIntent().getIntExtra("level",1);
     TextView levelText, levelNum, uploadButton, checkButton;
     ImageView imageView;
     private static final int PICK_IMAGE = 100;
@@ -100,6 +100,7 @@ public class LevelOne extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://api.searchandgo.xyz/?level=";
+        url += level;
         JSONObject params = new JSONObject();
         params.put("image", encodedImage);
 
