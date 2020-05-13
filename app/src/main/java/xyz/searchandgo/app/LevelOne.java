@@ -35,7 +35,8 @@ import java.io.InputStream;
 import android.util.Base64;
 
 public class LevelOne extends AppCompatActivity {
-    final String[] arr = {"","Mainan", "Anak Muda", "Bangunan"};
+
+    final String[] arr = {"","Banner", "Anak Muda", "Bangunan"};
     int level = 1;
     TextView levelText, levelNum, uploadButton, checkButton;
     ImageView imageView;
